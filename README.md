@@ -1,1 +1,2 @@
-# RAINBOW_FASION_WEB
+# 빅데이터 응용
+쇼핑몰 정보 웹페이지
