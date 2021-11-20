@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/search_result.css">
 
     <title>RAINBOW</title>
+    </style>
 </head>
 <!-- 반응형 사이드바 -->
 <body id="body-pd">
@@ -16,11 +17,11 @@
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="#" class="nav__logo">RAINBOW</a>
+                    <a href="home.php" class="nav__logo">RAINBOW</a>
                 </div>
 
                 <div class="nav__list">
-                    <a href="home.html" class="nav__link">
+                    <a href="home.php" class="nav__link">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">HOME</span>
                     </a>
@@ -30,14 +31,19 @@
                         <span class="nav_name">이 주의 HOT Fashion!</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="direct_search.php" class="nav__link">
                         <ion-icon name="search-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">검색</span>
                     </a>
 
-                    <a href="#" class="nav__link">
+                    <a href="User_custom.php" class="nav__link">
                         <ion-icon name="thumbs-up-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">맞춤 추천</span>
+                    </a>
+
+                    <a href="user_info.php" class="nav__link">
+                        <ion-icon name="person-outline" class="nav__icon"></ion-icon>
+                        <span class="nav_name">내 정보</span>
                     </a>
 
                 </div>
@@ -79,6 +85,7 @@
 
         <div class="text1">
             <?php
+                session_start();
                 $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
                     if (mysqli_connect_errno()) {
                     printf("Connect failed: %s\n", mysqli_connect_error());
@@ -95,13 +102,18 @@
                     $rank = 1;
                     while($row = mysqli_fetch_array($res))
                     {
-                      if($rank<=5){
-                         echo "<tr><td>"; 
-                         echo $rank;
-                         echo "</td><td>";   
-                         echo $row['topic'];
-                         echo "</td></tr>";  
-                      }
+                        if($rank==1){
+                            $_SESSION['Best_large_category'] = $row['large_category'];
+                            $_SESSION['Best_small_category'] = $row['small_category'];
+                        }
+
+                        if($rank<=5){
+                            echo "<tr><td>";
+                            echo $rank;
+                            echo "</td><td>";
+                            echo $row['topic'];
+                            echo "</td></tr>";
+                         }
                       $rank++;
                     }
                     echo "</table>";    
@@ -142,36 +154,48 @@
             mysqli_close($mysqli);
             ?>
         </div>
-
     </div>
-    <p style="clear:both;">&nbsp;</p>
+    <br>
 
-
-    <?php //window 랭킹에 따른 추천 옷 출력
-	// window로 형성한 table의 가장 첫번째 small_category 값을 가져와서 그 small_category를 가진 cloth_info의 data를 출력하고 싶다.
-
-
-
+    <!-- 가장 많이 검색된 제품 large_category 랭킹 제품을 보여줌 -->
+    <?php 
         $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
             if (mysqli_connect_errno()) {
             printf("Connect failed: %s\n", mysqli_connect_error());
             exit();
         } else {
-                $sql = "SELECT * FROM Cloth_info WHERE small_categoty = (SELECT DISTINCT small_category, COUNT(small_category) OVER (PARTITION BY small_category) AS categoty_count FROM Week ORDER BY categoty_count DESC LIMIT 1)";
-                $res = mysqli_query($mysqli, $sql);
-                while($row = mysqli_fetch_array($res))
-                {
-                    echo $row['small_category']; 
+            $sql = "SELECT * FROM Cloth_info";
+            $res = mysqli_query($mysqli, $sql);
+            $row_num = 0;
+            echo '<table>'; 
+            while($row = mysqli_fetch_array($res))
+            {
+                if($_SESSION['Best_large_category'] == $row['large_category']){
+                    if($row_num % 4 ==0){
+                        echo "<div class=\"one_row\">";
+                    }
+                    echo "<div class=\"one_goods\">";
+
+                    echo "<h3>". $row['name'] . "</h3>";
+                    echo "<div>" . $row['large_category'] . "</div>";
+                    echo "<div>" . $row['small_category'] . "</div>";
+                    echo "<a href=\"" .$row['link'] . "\">";
+                    echo "<img src=\"" . $row['image'] . "\"/>";
+                    echo "</a>";
+                    echo "<div>" . $row['price'] . "원</div>";
+                    echo "<div>" . $row['purchase_num'] . "명이 구매했습니다.</div>";
+                    echo" </div>";
+
+                    if($row_num % 4 ==3){
+                        echo "</div>";
+                    }
+                    $row_num++;
                 }
-            mysqli_close($mysqli);
-                
-                
+            }
+        $row_num = 0;
         }
-    mysqli_close($mysqli);
+        mysqli_close($mysqli);
     ?>
-
-랭킹 순 옷
-
 
     <?php
         $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");

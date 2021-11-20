@@ -1,9 +1,3 @@
-<?php
-    session_start();
-    if(!isset($_SESSION['user_id'])){
-        header('Location: ./login.html');
-    }
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
 
     <title>RAINBOW</title>
 </head>
@@ -21,21 +15,21 @@
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="home_user.php" class="nav__logo">RAINBOW</a>
+                    <a href="home.php" class="nav__logo">RAINBOW</a>
                 </div>
 
                 <div class="nav__list">
-                    <a href="home_user.php" class="nav__link active">
+                    <a href="home.php" class="nav__link active">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">HOME</span>
                     </a>
 
-                    <a href="week_hot_user.php" class="nav__link">
+                    <a href="week_hot.php" class="nav__link">
                         <ion-icon name="flame-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">이 주의 HOT Fashion!</span>
                     </a>
 
-                    <a href="direct_search_user.php" class="nav__link">
+                    <a href="direct_search.php" class="nav__link">
                         <ion-icon name="search-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">검색</span>
                     </a>
@@ -59,12 +53,14 @@
         </nav>
     </div>
 
-    <!-- 로그인 줄 -->
+    <!-- 로그인/회원가입 줄 -->
     <div style="font-size:15px;float:right;">
         <form method="post" action="login.php">
-            <?php echo $_SESSION['user_id'];?>님
+            <input type="button" value="Login" onclick="location.href = 'login.html'">
+            <input type="button" value="회원가입" style="font-size:11.4px;" onclick="location.href = 'member_join.html'">
         </div>
     <p style="clear:both;">&nbsp;</p>
+
 
     <h1>RAINBOW</h1> <!--사이트 이름-->
     <!--사이트 소개-->
@@ -92,6 +88,7 @@
 
     <h2>사이트 이용 방법</h2>
     <!--개발 완료 후 캡쳐해서 추가-->
+
 
     <!-- IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>

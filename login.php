@@ -19,7 +19,7 @@
 	if($user['password']==$_POST["password"]){
 		$_SESSION['user_id'] = $user["id"];
 		$_SESSION['user_pw'] = $user["password"];
-		header('Location: ./HOME.php');
+		header('Location: ./HOME_user.php');
 	}
 	else{
 		//POST로 받아온 아이다와 비밀번호가 비었다면 알림창을 띄우고 전 페이지로 돌아간다
