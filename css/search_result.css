@@ -12,7 +12,7 @@
   width: 20%;
   margin: 10px 13px;
   padding: 0px 4px;
-  background-color: #E5DDC4;
+  background-color: #e5ddc4;
   text-align: center;
   border-radius: 25px;
   height: 500px;
@@ -21,4 +21,16 @@
 .one_goods a > img {
   width: 250px;
   height: 300px;
+}
+
+.ranking_top3 {
+  background-color: rgb(255, 245, 230);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.ranking_oneBox {
+  margin-right: 80px;
+  padding: 20px;
 }

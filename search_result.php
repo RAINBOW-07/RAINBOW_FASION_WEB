@@ -52,38 +52,43 @@
             </div>
         </nav>
     </div>
-    <h1>검색 결과</h1>
+    <h1 style="padding: 30px 0px;">검색 결과</h1>
    <!-- <div class="one_row">-->
-   <?php
-        $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
-        if (mysqli_connect_errno()) {
-            printf("Connect failed: %s\n", mysqli_connect_error());
-            exit();
-        } else {
-            echo "<h2>가격 낮은순 TOP3</h2>";
-            $sql = "SELECT name, price, Rank() over (order by price) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
-            $res = mysqli_query($mysqli, $sql);
-            while($row = mysqli_fetch_array($res)){
-                echo "<div>" .$row['name']. "</div>";
+    <div class="ranking_top3"> 
+        <div class="ranking_oneBox">
+        <?php
+            $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
+            if (mysqli_connect_errno()) {
+                printf("Connect failed: %s\n", mysqli_connect_error());
+                exit();
+            } else {
+                echo "<h2>가격 낮은순 TOP3</h2>";
+                $sql = "SELECT name, price, Rank() over (order by price) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
+                $res = mysqli_query($mysqli, $sql);
+                while($row = mysqli_fetch_array($res)){
+                    echo "<div>" .$row['name']. "</div>";
+                }
             }
-        }
-    ?>
-    <?php
-        echo "<h2>구매수 높은순 TOP3</h2>";
-        $sql = "SELECT name, purchase_num, Rank() over (order by purchase_num DESC) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
-        $res = mysqli_query($mysqli, $sql);
-        while($row = mysqli_fetch_array($res)){
-            echo "<div>" .$row['name']. "</div>";
-        }
-    ?>
+        ?>
+        </div>
+        <div class="ranking_oneBox">
+            <?php
+                echo "<h2>구매수 높은순 TOP3</h2>";
+                $sql = "SELECT name, purchase_num, Rank() over (order by purchase_num DESC) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
+                $res = mysqli_query($mysqli, $sql);
+                while($row = mysqli_fetch_array($res)){
+                    echo "<div>" .$row['name']. "</div>";
+                }
+            ?>
+        </div>
+    </div>
     <?php
         $sql = "SELECT TRUNCATE(AVG(PRICE),0) FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" GROUP BY name";
         $res = mysqli_query($mysqli, $sql);
         
         if(mysqli_num_rows($res)!=0){
             $row = mysqli_fetch_row($res)[0];
-            echo "</br><div>찾으시는 상품의 평균 가격은 " .$row. "원 입니다.</div>";    
-    
+            echo "</br><div style=\"padding-left: 20px; padding-top: 40px;\">찾으시는 상품의 평균 가격은 <b>" .$row. "</b>원 입니다.</div>";    
         }
     ?>
     <?php
@@ -94,7 +99,7 @@
             echo "<p>찾으시는 상품이 없습니다.</p>";
         }else{
             $row_num = 0;
-            echo "<div> 총 " .$num_rows . "건의 상품이 검색되었습니다.</div>";
+            echo "<div style=\"padding-left: 20px; padding-bottom: 40px; border-bottom: 1px solid rgba(1, 1, 1, 0.2);\"> 총 <b>" .$num_rows . "</b>건의 상품이 검색되었습니다.</div>";
             
             while($row = mysqli_fetch_array($res))
             {

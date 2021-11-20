@@ -64,38 +64,43 @@
         </div>
     <p style="clear:both;">&nbsp;</p>
     
-    <h1>검색 결과</h1>
+    <h1 style="padding-bottom: 10px;">검색 결과</h1>
 
-    <?php
-        $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
-        if (mysqli_connect_errno()) {
-            printf("Connect failed: %s\n", mysqli_connect_error());
-            exit();
-        } else {
-            echo "<h2>가격 낮은순 TOP3</h2>";
-            $sql = "SELECT name, price, Rank() over (order by price) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
-            $res = mysqli_query($mysqli, $sql);
-            while($row = mysqli_fetch_array($res)){
-                echo "<div>" .$row['name']. "</div>";
+    <div class="ranking_top3"> 
+        <div class="ranking_oneBox">
+        <?php
+            $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
+            if (mysqli_connect_errno()) {
+                printf("Connect failed: %s\n", mysqli_connect_error());
+                exit();
+            } else {
+                echo "<h2>가격 낮은순 TOP3</h2>";
+                $sql = "SELECT name, price, Rank() over (order by price) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
+                $res = mysqli_query($mysqli, $sql);
+                while($row = mysqli_fetch_array($res)){
+                    echo "<div>" .$row['name']. "</div>";
+                }
             }
-        }
-    ?>
-    <?php
-        echo "<h2>구매수 높은순 TOP3</h2>";
-        $sql = "SELECT name, purchase_num, Rank() over (order by purchase_num DESC) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
-        $res = mysqli_query($mysqli, $sql);
-        while($row = mysqli_fetch_array($res)){
-            echo "<div>" .$row['name']. "</div>";
-        }
-    ?>
+            ?>
+        </div>
+        <div class="ranking_oneBox">
+            <?php
+                echo "<h2>구매수 높은순 TOP3</h2>";
+                $sql = "SELECT name, purchase_num, Rank() over (order by purchase_num DESC) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
+                $res = mysqli_query($mysqli, $sql);
+                while($row = mysqli_fetch_array($res)){
+                    echo "<div>" .$row['name']. "</div>";
+                }
+            ?>
+        </div>
+    </div>
     <?php
         $sql = "SELECT TRUNCATE(AVG(PRICE),0) FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" GROUP BY name";
         $res = mysqli_query($mysqli, $sql);
         
         if(mysqli_num_rows($res)!=0){
             $row = mysqli_fetch_row($res)[0];
-            echo "</br><div>찾으시는 상품의 평균 가격은 " .$row. "원 입니다.</div>";    
-    
+            echo "</br><div style=\"padding-left: 20px; padding-top: 40px;\">찾으시는 상품의 평균 가격은 <b>" .$row. "</b>원 입니다.</div>";    
         }
     ?>
     <?php
@@ -106,7 +111,7 @@
             echo "<p>찾으시는 상품이 없습니다.</p>";
         }else{
             $row_num = 0;
-            echo "<div> 총 " .$num_rows . "건의 상품이 검색되었습니다.</div>";
+            echo "<div style=\"padding-left: 20px; padding-bottom: 40px; border-bottom: 1px solid rgba(1, 1, 1, 0.2);\"> 총 <b>" .$num_rows . "</b>건의 상품이 검색되었습니다.</div>";
             
             while($row = mysqli_fetch_array($res))
             {
@@ -143,11 +148,11 @@
 
     <!--update사용, login시에만 정보 수정-->
     </br>
-    <div style={display: block;}><ion-icon name="help-circle"></ion-icon>가격 정보가 잘못되었나요?</footer></br>
+    <div><ion-icon name="help-circle"></ion-icon>가격 정보가 잘못되었나요?</footer></br>
     더 좋은 정보를 제공할 수 있게 도움을 주세요!
     <form action="price_update.php" method="post">
-        <input type="text" name = "goods_name" placeholder="상품명을 정확히 입력해주세요."/>
-        <input type="text" name = "true_price" placeholder="올바른 가격을 입력해주세요."/>
+        <input style="padding: 2px 15px;" type="text" name = "goods_name" placeholder="상품명을 정확히 입력해주세요."/>
+        <input style="padding: 2px 15px;" type="text" name = "true_price" placeholder="올바른 가격을 입력해주세요."/>
         <button type="submit">제출</button>
     </form></div>
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
