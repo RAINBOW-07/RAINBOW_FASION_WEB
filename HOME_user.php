@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- CSS -->
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/home.css">
 
     <title>RAINBOW</title>
 </head>
@@ -59,40 +59,45 @@
         </nav>
     </div>
 
-    <!-- 로그인 줄 -->
+    <!-- 로그인/회원가입 줄 -->
     <div style="font-size:15px;float:right;">
         <form method="post" action="login.php">
-            <?php echo $_SESSION['user_id'];?>님
+            <input type="button" value="Login" onclick="location.href = 'login.html'">
+            <input type="button" value="회원가입" style="font-size:11.4px;" onclick="location.href = 'member_join.html'">
         </div>
     <p style="clear:both;">&nbsp;</p>
+
 
     <h1>RAINBOW</h1> <!--사이트 이름-->
     <!--사이트 소개-->
     <div class="site_introduce">
-        Rainbow site는 패션 정보를 다루는 사이트입니다. 의류를 직접 검색할 수 있고 최근의 인기 추천 및 맞춤 추천을 받아볼 수 있습니다. 블라블라
+        RAINBOW는 패션 정보를 다루는 사이트입니다.</br>금주에 사람들이 가장 많이 검색한 의류 정보를 볼 수 있고, 사용자의 검색 기록에 따라 맞춤 정보를 제공합니다. </br>
+        원하는 의류의 정보를 직접 검색해 볼 수 있습니다. RAINBOW를 통해 패션 정보를 찾아보세요!
     </div>
     <!--현재 비교하는 사이트 설명-->
     <h2>다음의 두 사이트 분석 정보를 제공합니다.</h2>
     <div class="site_sort">
-        <div class="hotping">
-            <h1>HOTPING</h1>
-            <a href="https://hotping.co.kr/"><img src="image/HOTPING.png"/></a>
-            <div>
-                핫핑은 블라블라인 사이트입니다.
-            </div>
-        </div>
-        <div class="attrangs">
-            <h1>ATTRANGS</h1>
-            <a href="https://attrangs.co.kr/"><img src="image/ATTRANGS.png"/></a>
-            <div>
-                아뜨랑스는 블라블라인 사이트입니다.
-            </div>
-        </div>
+            <?php            
+                $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
+                if (mysqli_connect_errno()) {
+                    printf("Connect failed: %s\n", mysqli_connect_error());
+                    exit();
+                } else {
+                    $sql = "select * from site";
+                    $res = mysqli_query($mysqli, $sql);
+
+                    while($row = mysqli_fetch_array($res))
+                    {
+                        echo "<div class=\"". $row['site_name']. "\">";
+                        echo "<h1>".$row['site_name']."</h1>";
+                        echo "<a href=\"".$row['site_link']."\"/><img src=\"".$row['site_image']."\"/></a>";
+                        echo "<div>".$row['site_introduce']."</div>";
+                        echo "</div>";
+                    }
+                }
+                mysqli_close($mysqli);
+            ?>
     </div>
-
-    <h2>사이트 이용 방법</h2>
-    <!--개발 완료 후 캡쳐해서 추가-->
-
     <!-- IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- JS -->
