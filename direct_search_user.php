@@ -96,7 +96,7 @@
             <script>
                 function setCookie(value){
                     document.cookie=`large_category=${value}`;
-                    window.location.assign('direct_search.php');
+                    window.location.assign('direct_search_user.php');
                 }
             </script>
             소분류:
