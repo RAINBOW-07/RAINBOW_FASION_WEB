@@ -56,11 +56,12 @@
     </div>
 
     <!-- 로그인/회원가입 줄 -->
-    <div style="font-size:15px;float:right;">
-        <form method="post" action="login.php">
-            <input type="button" value="Login" onclick="location.href = 'login.html'">
-            <input type="button" value="회원가입" style="font-size:11.4px;" onclick="location.href = 'member_join.html'">
-        </div>
+    <div style="font-size:20px; float:right; margin-right: 30px;">
+        <form style="flex-direction: row; align-items: center;" method="post" action="login.php">
+            <input style="background-color: #E5DDC4; font-weight: bold; padding: 6px 10px; border: 1px solid black; border-radius: 10px;" type="button" value="로그인" onclick="location.href = 'login.html'">
+            <input style="background-color: #E5DDC4; font-weight: bold; padding: 6px 10px; border: 1px solid black; border-radius: 10px;" type="button" value="회원가입" style="font-size:11.4px;" onclick="location.href = 'member_join.html'">
+        </form>
+    </div>
     <p style="clear:both;">&nbsp;</p>
 
     <div class="image"><img src="img/week_hot.jpg" alt="today rank" style="display: block; margin: 0 auto;width:100%">

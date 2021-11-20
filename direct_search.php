@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="nav__list">
-                    <a href="home.php" class="nav__link active">
+                    <a href="home.php" class="nav__link">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">HOME</span>
                     </a>
@@ -29,7 +29,7 @@
                         <span class="nav_name">이 주의 HOT Fashion!</span>
                     </a>
 
-                    <a href="direct_search.php" class="nav__link">
+                    <a href="direct_search.php" class="nav__link active">
                         <ion-icon name="search-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">검색</span>
                     </a>
@@ -52,6 +52,16 @@
             </div>
         </nav>
     </div>
+
+    <!-- 로그인/회원가입 줄 -->
+    <div style="font-size:20px; float:right; margin-right: 30px;">
+        <form style="flex-direction: row; align-items: center;" method="post" action="login.php">
+            <input style="background-color: #E5DDC4; font-weight: bold; padding: 6px 10px; border: 1px solid black; border-radius: 10px;" type="button" value="로그인" onclick="location.href = 'login.html'">
+            <input style="background-color: #E5DDC4; font-weight: bold; padding: 6px 10px; border: 1px solid black; border-radius: 10px;" type="button" value="회원가입" style="font-size:11.4px;" onclick="location.href = 'member_join.html'">
+        </form>
+    </div>
+    <p style="clear:both;">&nbsp;</p>
+
     <h1>패션 상품 정보 검색</h1>
     <div class="search">
         <form method="post" action="search_result.php">
