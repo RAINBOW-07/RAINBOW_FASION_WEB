@@ -15,16 +15,16 @@
             <div>
                 <div class="nav__brand">
                     <ion-icon name="menu-outline" class="nav__toggle" id="nav-toggle"></ion-icon>
-                    <a href="HOME.html" class="nav__logo">RAINBOW</a>
+                    <a href="#" class="nav__logo">RAINBOW</a>
                 </div>
 
                 <div class="nav__list">
-                    <a href="HOME.html" class="nav__link">
+                    <a href="HOME.php" class="nav__link">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">HOME</span>
                     </a>
 
-                    <a href="week_hot.php" class="nav__link">
+                    <a href="#" class="nav__link">
                         <ion-icon name="flame-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">이 주의 HOT Fashion!</span>
                     </a>
@@ -34,33 +34,22 @@
                         <span class="nav_name">검색</span>
                     </a>
 
-                    <a href="User_custom.php" class="nav__link">
+                    <a href="#" class="nav__link">
                         <ion-icon name="thumbs-up-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">맞춤 추천</span>
                     </a>
-
                     <a href="user_info.php" class="nav__link">
                         <ion-icon name="person-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">내 정보</span>
                     </a>
-
                 </div>
-                <a href="logout.php" class="nav__link">
+                <a href="HOME.html" class="nav__link">
                     <ion-icon name="log-out-outline" class="nav__icon"></ion-icon>
                     <span class="nav_name">Log out</span>
                 </a>
             </div>
         </nav>
     </div>
-
-    <!-- 로그인/회원가입 줄 -->
-    <div style="font-size:15px;float:right;">
-        <form method="post" action="login.php">
-            <input type="button" value="Login" onclick="location.href = 'login.html'">
-            <input type="button" value="회원가입" style="font-size:11.4px;" onclick="location.href = 'member_join.html'">
-        </div>
-    <p style="clear:both;">&nbsp;</p>
-
     <h1>패션 상품 정보 검색</h1>
     <div class="search">
         <form method="post" action="search_result.php">
