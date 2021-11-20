@@ -72,6 +72,8 @@
                 <td>PASSWORD: </td>
                 <td><input type="button" value="비밀번호 변경" onclick="location.href = 'pw_change.php'"></td>
             </tr>
+        </table>
+        <input type="button" value="회원 탈퇴" onclick="location.href = 'user_leave.php'"/>
     </div>
 
     <!-- IONICONS -->
