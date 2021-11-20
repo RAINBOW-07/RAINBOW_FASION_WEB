@@ -154,3 +154,57 @@ a {
     transform: rotate(180deg);
     transition: .5s;
 }
+
+
+.image {
+  position:relative;
+}
+
+.image .today {
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 4.2vw;
+  font-style: italic;
+  color: var(--font-color);
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+}
+
+.image .text1 {
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5vw;
+  font-style: italic;
+  color: var(--font-color);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.image .text2 {
+  padding: 10px 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-style: italic;
+  font-size: 1.5vw;
+  color: var(--font-color);
+  position: absolute;
+  top: 50%;
+  left: 73%;
+  transform: translate(-50%, -50%);
+}
+
+.center {
+  padding: 10px 20px;
+  border-radius: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 70vh;
+}
