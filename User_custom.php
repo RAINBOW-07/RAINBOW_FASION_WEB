@@ -128,8 +128,7 @@
                             echo "<div class=\"one_goods\">";
 
                             echo "<h3>". $row['name'] . "</h3>";
-                            echo "<div>" . $row['large_category'] . "</div>";
-                            echo "<div>" . $row['small_category'] . "</div>";
+                            echo "<div>" . $row['large_category'] . " > " . $row['small_category'] . "</div>";
                             echo "<a href=\"" .$row['link'] . "\">";
                             echo "<img src=\"" . $row['image'] . "\"/>";
                             echo "</a>";
