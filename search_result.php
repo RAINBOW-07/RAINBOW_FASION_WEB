@@ -67,7 +67,7 @@
                         echo "<p>찾으시는 상품이 없습니다.</p>";
                     }else{
                         $row_num = 0;
-                        echo "<div> 총 " .$num_rows . "건의 상품이 있습니다.</div>";
+                        echo "<div> 총 " .$num_rows . "건의 상품이 검색되었습니다.</div>";
                       
                         while($row = mysqli_fetch_array($res))
                         {
