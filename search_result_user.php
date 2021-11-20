@@ -95,7 +95,7 @@
         </div>
     </div>
     <?php
-        $sql = "SELECT TRUNCATE(AVG(PRICE),0) FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" GROUP BY name";
+        $sql = "SELECT TRUNCATE(AVG(PRICE),0) FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\"";
         $res = mysqli_query($mysqli, $sql);
         
         if(mysqli_num_rows($res)!=0){
