@@ -63,14 +63,13 @@
     <div class="center">
         <form method="post" action="pw_update.php">
         <h1>비밀번호 변경</h1>
-        <table>
+        <table style="margin: 3px 0px;">
             <tr>
                 <td>새 비밀번호: </td>
-                <td><input type="text" size="35" name="password"></td>
+                <td><input style="margin-bottom: 3px; padding: 5px 5px; border-radius: 7px;" type="text" size="35" name="password"></td>
             </tr>
-            <tr>
-                <td><input type="submit" value="변경하기"></td>
-            </tr>
+        </table>
+        <input style="margin-top: 8px; width: 100%; padding: 5px 5px; border-radius: 7px; background-color: #E5DDC4;" type="submit" value="변경하기"/>
     </div>
 
     <!-- IONICONS -->
