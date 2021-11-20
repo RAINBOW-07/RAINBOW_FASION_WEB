@@ -26,7 +26,7 @@
                         <span class="nav_name">HOME</span>
                     </a>
 
-                    <a href="week_hot.html" class="nav__link active">
+                    <a href="week_hot.php" class="nav__link active">
                         <ion-icon name="flame-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">이 주의 HOT Fashion!</span>
                     </a>

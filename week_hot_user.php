@@ -17,7 +17,7 @@
 </head>
 <!-- 반응형 사이드바 -->
 <body id="body-pd">
-    <div class="l-navbar" id="navbar">
+<div class="l-navbar" id="navbar">
         <nav class="nav">
             <div>
                 <div class="nav__brand">
@@ -36,7 +36,7 @@
                         <span class="nav_name">이 주의 HOT Fashion!</span>
                     </a>
 
-                    <a href="User_custom.php" class="nav__link">
+                    <a href="direct_search_user.php" class="nav__link">
                         <ion-icon name="search-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">검색</span>
                     </a>
@@ -59,6 +59,7 @@
             </div>
         </nav>
     </div>
+
 
     <!-- 로그인 줄 -->
     <div style="font-size:15px;float:right;">
