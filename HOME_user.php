@@ -61,9 +61,7 @@
 
     <!-- 로그인/회원가입 줄 -->
     <div style="font-size:15px;float:right;">
-        <form method="post" action="login.php">
-            <input type="button" value="Login" onclick="location.href = 'login.html'">
-            <input type="button" value="회원가입" style="font-size:11.4px;" onclick="location.href = 'member_join.html'">
+            <?php echo $_SESSION['user_id'];?>님
         </div>
     <p style="clear:both;">&nbsp;</p>
 

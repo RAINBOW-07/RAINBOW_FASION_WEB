@@ -58,6 +58,12 @@
             </div>
         </nav>
     </div>
+
+    <div style="font-size:15px;float:right;">
+            <?php echo $_SESSION['user_id'];?>님
+        </div>
+    <p style="clear:both;">&nbsp;</p>
+    
     <h1>검색 결과</h1>
    <!-- <div class="one_row">-->
             <?php
