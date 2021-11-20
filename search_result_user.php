@@ -66,55 +66,67 @@
     
     <h1>검색 결과</h1>
    <!-- <div class="one_row">-->
-            <?php
-                $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
-                if (mysqli_connect_errno()) {
-                    printf("Connect failed: %s\n", mysqli_connect_error());
-                    exit();
-                } else {
-                    $sql = "SELECT * FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\"";
-                    $res = mysqli_query($mysqli, $sql);
-                    $num_rows = mysqli_num_rows($res);
-                    if($num_rows==0){
-                        echo "<p>찾으시는 상품이 없습니다.</p>";
-                    }else{
-                        $row_num = 0;
-                        echo "<div> 총 " .$num_rows . "건의 상품이 있습니다.</div>";
-                        
-                        while($row = mysqli_fetch_array($res))
-                        {
-                            if($row_num % 4 ==0){
-                                echo "<div class=\"one_row\">";
-                            }
-                            echo "<div class=\"one_goods\">";
-
-                            echo "<h3>". $row['name'] . "</h3>";
-                            echo "<div>" . $row['large_category'] . "</div>";
-                            echo "<div>" . $row['small_category'] . "</div>";
-                            echo "<a href=\"" .$row['link'] . "\">";
-                            echo "<img src=\"" . $row['image'] . "\"/>";
-                            echo "</a>";
-                            echo "<div>" . $row['price'] . "원</div>";
-                            echo "<div>" . $row['purchase_num'] . "명이 구매했습니다.</div>";
-                            echo" </div>";
-
-                            if($row_num % 4 ==3){
-                                echo "</div>";
-                            }
-
-                            $row_num++;
-                        }
-                        $row_num = 0;
-                    }
-                }
-            ?>
-            <?php
-                    //search_record table에 user id, 검색어 넣기  
-                $sql = "INSERT INTO search_record(id, large_category, small_category) VALUES ('". $_SESSION['user_id']. "', '". $_POST['cloth_large']. "', '". $_POST['cloth_small'] . "')";
-                $res = mysqli_query($mysqli, $sql);
+    <?php
+        $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
+        if (mysqli_connect_errno()) {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+        } else {
+            $sql = "SELECT * FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\"";
+            $res = mysqli_query($mysqli, $sql);
+            $num_rows = mysqli_num_rows($res);
+            if($num_rows==0){
+                echo "<p>찾으시는 상품이 없습니다.</p>";
+            }else{
+                $row_num = 0;
+                echo "<div> 총 " .$num_rows . "건의 상품이 있습니다.</div>";
                 
-                mysqli_close($mysqli);
-            ?>
+                while($row = mysqli_fetch_array($res))
+                {
+                    if($row_num % 4 ==0){
+                        echo "<div class=\"one_row\">";
+                    }
+                    echo "<div class=\"one_goods\">";
+
+                    echo "<h3>". $row['name'] . "</h3>";
+                    echo "<div>" . $row['large_category'] . "</div>";
+                    echo "<div>" . $row['small_category'] . "</div>";
+                    echo "<a href=\"" .$row['link'] . "\">";
+                    echo "<img src=\"" . $row['image'] . "\"/>";
+                    echo "</a>";
+                    echo "<div>" . $row['price'] . "원</div>";
+                    echo "<div>" . $row['purchase_num'] . "명이 구매했습니다.</div>";
+                    echo" </div>";
+
+                    if($row_num % 4 ==3){
+                        echo "</div>";
+                    }
+
+                    $row_num++;
+                }
+                $row_num = 0;
+            }
+        }
+    ?>
+    <?php
+         //search_record table에 user id, 검색어 넣기  
+        $sql = "INSERT INTO search_record(id, large_category, small_category) VALUES ('". $_SESSION['user_id']. "', '". $_POST['cloth_large']. "', '". $_POST['cloth_small'] . "')";
+        $res = mysqli_query($mysqli, $sql);
+        
+        mysqli_close($mysqli);
+    ?>
+
+    <!--update사용, login시에만 정보 수정-->
+    </br>
+    <div style={display: block;}><ion-icon name="help-circle"></ion-icon>가격 정보가 잘못되었나요?</footer></br>
+    더 좋은 정보를 제공할 수 있게 도움을 주세요!
+    <form action="price_update.php" method="post">
+        <input type="text" name = "goods_name" placeholder="상품명을 정확히 입력해주세요."/>
+        <input type="text" name = "true_price" placeholder="올바른 가격을 입력해주세요."/>
+        <button type="submit">제출</button>
+    </form></div>
+    <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
+
     <!--</div> IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- JS -->
