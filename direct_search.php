@@ -64,10 +64,10 @@
 
     <h1>패션 상품 정보 검색</h1>
     <div class="search">
-        <form method="post" action="search_result.php">
+        <form style="font-weight: 600; margin-left: 30px;" method="post" action="search_result.php">
             대분류: 
             <?php
-                echo "<select name=\"cloth_large\" onchange=\"setCookie(this.value);\">";
+                echo "<select style=\"border-radius: 10px; padding: 2px 15px;\" name=\"cloth_large\" onchange=\"setCookie(this.value);\">";
 
                 $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
                 if (mysqli_connect_errno()) {
@@ -97,7 +97,7 @@
             </script>
             소분류:
             <?php
-                echo "<select name=\"cloth_small\">";
+                echo "<select style=\"border-radius: 10px; padding: 2px 15px;\" name=\"cloth_small\">";
                 
                 $compare = $_COOKIE["large_category"];
                 
@@ -119,9 +119,8 @@
 
                 echo "</select>"
             ?>
-            이름: <input type="text" name="cloth_name"/>
-            
-            <button type="submit">검색</button>
+            이름: <input style="border-radius: 10px; padding: 2px 15px;" type="text" name="cloth_name"/>
+            <button type="submit" style="border-radius: 10px; background-color: #E5DDC4; padding: 2px 15px;">검색</button>
       </form>
     </div>
     <!-- IONICONS -->
