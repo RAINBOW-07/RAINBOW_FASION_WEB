@@ -54,48 +54,63 @@
     </div>
     <h1>검색 결과</h1>
    <!-- <div class="one_row">-->
-            <?php
-                $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
-                if (mysqli_connect_errno()) {
-                    printf("Connect failed: %s\n", mysqli_connect_error());
-                    exit();
-                } else {
-                    $sql = "SELECT * FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\"";
-                    $res = mysqli_query($mysqli, $sql);
-                    $num_rows = mysqli_num_rows($res);
-                    if($num_rows==0){
-                        echo "<p>찾으시는 상품이 없습니다.</p>";
-                    }else{
-                        $row_num = 0;
-                        echo "<div> 총 " .$num_rows . "건의 상품이 검색되었습니다.</div>";
-                      
-                        while($row = mysqli_fetch_array($res))
-                        {
-                            if($row_num % 4 ==0){
-                                echo "<div class=\"one_row\">";
-                            }
-                            echo "<div class=\"one_goods\">";
-
-                            echo "<h3>". $row['name'] . "</h3>";
-                            echo "<div>" . $row['large_category'] . " > " . $row['small_category'] . "</div>";
-                            echo "<a href=\"" .$row['link'] . "\">";
-                            echo "<img src=\"" . $row['image'] . "\"/>";
-                            echo "</a>";
-                            echo "<div>" . $row['price'] . "원</div>";
-                            echo "<div>" . $row['purchase_num'] . "명이 구매했습니다.</div>";
-                            echo" </div>";
-
-                            if($row_num % 4 ==3){
-                                echo "</div>";
-                            }
-
-                            $row_num++;
-                        }
-                        $row_num = 0;
-                    }
+   <?php
+        $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
+        if (mysqli_connect_errno()) {
+            printf("Connect failed: %s\n", mysqli_connect_error());
+            exit();
+        } else {
+            echo "<h2>가격 낮은순 TOP3</h2>";
+            $sql = "SELECT name, price, Rank() over (order by price) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
+            $res = mysqli_query($mysqli, $sql);
+            while($row = mysqli_fetch_array($res)){
+                echo "<div>" .$row['name']. "</div>";
+            }
+        }
+    ?>
+    <?php
+        echo "<h2>구매수 높은순 TOP3</h2>";
+        $sql = "SELECT name, purchase_num, Rank() over (order by purchase_num DESC) ranking FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" LIMIT 3";
+        $res = mysqli_query($mysqli, $sql);
+        while($row = mysqli_fetch_array($res)){
+            echo "<div>" .$row['name']. "</div>";
+        }
+    ?>
+    <?php
+        $sql = "SELECT * FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\"";
+        $res = mysqli_query($mysqli, $sql);
+        $num_rows = mysqli_num_rows($res);
+        if($num_rows==0){
+            echo "<p>찾으시는 상품이 없습니다.</p>";
+        }else{
+            $row_num = 0;
+            echo "<div> 총 " .$num_rows . "건의 상품이 검색되었습니다.</div>";
+            
+            while($row = mysqli_fetch_array($res))
+            {
+                if($row_num % 4 ==0){
+                    echo "<div class=\"one_row\">";
                 }
-                mysqli_close($mysqli);
-            ?>
+                echo "<div class=\"one_goods\">";
+
+                echo "<h3>". $row['name'] . "</h3>";
+                echo "<div>" . $row['large_category'] . " > " . $row['small_category'] . "</div>";
+                echo "<a href=\"" .$row['link'] . "\">";
+                echo "<img src=\"" . $row['image'] . "\"/>";
+                echo "</a>";
+                echo "<div>" . $row['price'] . "원</div>";
+                echo "<div>" . $row['purchase_num'] . "명이 구매했습니다.</div>";
+                echo" </div>";
+
+                if($row_num % 4 ==3){
+                    echo "</div>";
+                }
+
+                $row_num++;
+            }
+            $row_num = 0;
+        }
+    ?>
     <!--</div> IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
     <!-- JS -->
