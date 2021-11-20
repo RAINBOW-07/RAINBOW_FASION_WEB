@@ -89,6 +89,16 @@
         }
     ?>
     <?php
+        $sql = "SELECT TRUNCATE(AVG(PRICE),0) FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" GROUP BY name";
+        $res = mysqli_query($mysqli, $sql);
+        
+        if(mysqli_num_rows($res)!=0){
+            $row = mysqli_fetch_row($res)[0];
+            echo "</br><div>찾으시는 상품의 평균 가격은 " .$row. "원 입니다.</div>";    
+    
+        }
+    ?>
+    <?php
         $sql = "SELECT * FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\"";
         $res = mysqli_query($mysqli, $sql);
         $num_rows = mysqli_num_rows($res);
@@ -123,7 +133,6 @@
             $row_num = 0;
         }
     ?>
-
     <?php
          //search_record table에 user id, 검색어 넣기  
         $sql = "INSERT INTO search_record(id, large_category, small_category) VALUES ('". $_SESSION['user_id']. "', '". $_POST['cloth_large']. "', '". $_POST['cloth_small'] . "')";
