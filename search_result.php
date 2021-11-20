@@ -67,14 +67,8 @@
                         echo "<p>찾으시는 상품이 없습니다.</p>";
                     }else{
                         $row_num = 0;
-                        echo "<div> 총" .$num_rows . "건의 상품이 있습니다.</div>";
-                        echo "
-                            <select name=\"order_standard\">
-                                <option value=\"구매순\">구매순</option>
-                                <option value=\"가격순\">가격순</option>
-                            </select>
-                        
-                        ";
+                        echo "<div> 총 " .$num_rows . "건의 상품이 있습니다.</div>";
+                      
                         while($row = mysqli_fetch_array($res))
                         {
                             if($row_num % 4 ==0){

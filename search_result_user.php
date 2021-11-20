@@ -73,14 +73,8 @@
                         echo "<p>찾으시는 상품이 없습니다.</p>";
                     }else{
                         $row_num = 0;
-                        echo "<div> 총" .$num_rows . "건의 상품이 있습니다.</div>";
-                        echo "
-                            <select name=\"order_standard\">
-                                <option value=\"구매순\">구매순</option>
-                                <option value=\"가격순\">가격순</option>
-                            </select>
+                        echo "<div> 총 " .$num_rows . "건의 상품이 있습니다.</div>";
                         
-                        ";
                         while($row = mysqli_fetch_array($res))
                         {
                             if($row_num % 4 ==0){
@@ -107,12 +101,13 @@
                         $row_num = 0;
                     }
                 }
-                mysqli_close($mysqli);
             ?>
             <?php
                     //search_record table에 user id, 검색어 넣기  
-                $sql = "INSERT INTO search_record(id, large_category, small_category) VALUES ('". $_COOKIE['id']. "', '". $_POST['cloth_large']. "', '". $_POST['cloth_small'] . "')";
+                $sql = "INSERT INTO search_record(id, large_category, small_category) VALUES ('". $_SESSION['user_id']. "', '". $_POST['cloth_large']. "', '". $_POST['cloth_small'] . "')";
                 $res = mysqli_query($mysqli, $sql);
+                
+                mysqli_close($mysqli);
             ?>
     <!--</div> IONICONS -->
     <script src="https://unpkg.com/ionicons@5.2.3/dist/ionicons.js"></script>
