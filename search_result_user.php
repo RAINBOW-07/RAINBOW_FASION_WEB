@@ -95,15 +95,6 @@
         </div>
     </div>
     <?php
-        $sql = "SELECT TRUNCATE(AVG(PRICE),0) FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\" GROUP BY name";
-        $res = mysqli_query($mysqli, $sql);
-        
-        if(mysqli_num_rows($res)!=0){
-            $row = mysqli_fetch_row($res)[0];
-            echo "</br><div style=\"padding-left: 20px; padding-top: 40px;\">찾으시는 상품의 평균 가격은 <b>" .$row. "</b>원 입니다.</div>";    
-        }
-    ?>
-    <?php
         $sql = "SELECT * FROM cloth_info WHERE large_category =\"". $_POST['cloth_large'] ."\" AND small_category = \"". $_POST['cloth_small'] ."\" AND name LIKE \"%". $_POST['cloth_name']."%\"";
         $res = mysqli_query($mysqli, $sql);
         $num_rows = mysqli_num_rows($res);
