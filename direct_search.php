@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="nav__list">
-                    <a href="HOME.html" class="nav__link">
+                    <a href="HOME.php" class="nav__link">
                         <ion-icon name="home-outline" class="nav__icon"></ion-icon>
                         <span class="nav_name">HOME</span>
                     </a>
