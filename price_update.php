@@ -14,9 +14,8 @@
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     } else {
-        $sql = "UPDATE cloth_info SET price='$true_price' WHERE name='$goods_name'";
+        $sql = "UPDATE cloth_info SET price='$true_price' WHERE name LIKE '%$goods_name%'"; // 데이터 삽입에 공백 등의 문제가 있을 수 있으므로
         $res = mysqli_query($mysqli, $sql);
-        mysqli_commit($mysqli);
         mysqli_close($mysqli);
     }
 ?>
