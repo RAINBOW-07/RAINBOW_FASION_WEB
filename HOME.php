@@ -71,20 +71,26 @@
     <!--현재 비교하는 사이트 설명-->
     <h2>다음의 두 사이트 분석 정보를 제공합니다.</h2>
     <div class="site_sort">
-        <div class="hotping">
-            <h1>HOTPING</h1>
-            <a href="https://hotping.co.kr/"><img src="image/HOTPING.png"/></a>
-            <div>
-                핫핑은 블라블라인 사이트입니다.
-            </div>
-        </div>
-        <div class="attrangs">
-            <h1>ATTRANGS</h1>
-            <a href="https://attrangs.co.kr/"><img src="image/ATTRANGS.png"/></a>
-            <div>
-                아뜨랑스는 블라블라인 사이트입니다.
-            </div>
-        </div>
+            <?php            
+                $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
+                if (mysqli_connect_errno()) {
+                    printf("Connect failed: %s\n", mysqli_connect_error());
+                    exit();
+                } else {
+                    $sql = "select * from site";
+                    $res = mysqli_query($mysqli, $sql);
+
+                    while($row = mysqli_fetch_array($res))
+                    {
+                        echo "<div class=\"". $row['site_name']. "\">";
+                        echo "<h1>".$row['site_name']."</h1>";
+                        echo "<a href=\"".$row['site_link']."\"/><img src=\"".$row['site_image']."\"/></a>";
+                        echo "<div>".$row['site_introduce']."</div>";
+                        echo "</div>";
+                    }
+                }
+                mysqli_close($mysqli);
+            ?>
     </div>
 
     <!-- IONICONS -->
