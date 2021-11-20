@@ -66,14 +66,14 @@
         <table>
             <tr>
                 <td>ID: </td>
-                <td><?php echo $_SESSION['user_id'];?></td>
+                <td style="margin-bottom: 3px; padding: 5px 20px; border-radius: 7px;"><?php echo $_SESSION['user_id'];?></td>
             </tr>
             <tr>
                 <td>PASSWORD: </td>
-                <td><input type="button" value="비밀번호 변경" onclick="location.href = 'pw_change.php'"></td>
+                <td><input style="margin-left: 15px; padding: 5px 5px; border-radius: 7px;" type="button" value="비밀번호 변경" onclick="location.href = 'pw_change.php'"></td>
             </tr>
         </table>
-        <input type="button" value="회원 탈퇴" onclick="location.href = 'user_leave.php'"/>
+        <input style="margin-top: 8px; width: 100%; padding: 5px 5px; border-radius: 7px; background-color: #E5DDC4;" type="button" value="회원 탈퇴" onclick="location.href = 'user_leave.php'"/>
     </div>
 
     <!-- IONICONS -->
