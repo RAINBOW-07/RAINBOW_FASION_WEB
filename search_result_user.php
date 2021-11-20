@@ -59,9 +59,9 @@
         </nav>
     </div>
 
-    <div style="font-size:15px;float:right;">
-            <?php echo $_SESSION['user_id'];?>님
-        </div>
+    <div style="font-size:20px; float:right; margin-right: 30px;">
+        <?php echo $_SESSION['user_id'];?>님
+    </div>
     <p style="clear:both;">&nbsp;</p>
     
     <h1 style="padding-bottom: 10px;">검색 결과</h1>
@@ -139,7 +139,7 @@
         }
     ?>
     <?php
-         //search_record table에 user id, 검색어 넣기  
+        //search_record table에 user id, 검색어 넣기  
         $sql = "INSERT INTO search_record(id, large_category, small_category) VALUES ('". $_SESSION['user_id']. "', '". $_POST['cloth_large']. "', '". $_POST['cloth_small'] . "')";
         $res = mysqli_query($mysqli, $sql);
         

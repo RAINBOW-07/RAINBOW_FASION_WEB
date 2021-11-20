@@ -60,9 +60,9 @@
     </div>
 
     <!-- 로그인/회원가입 줄 -->
-    <div style="font-size:15px;float:right;">
-            <?php echo $_SESSION['user_id'];?>님
-        </div>
+    <div style="font-size:20px; float:right; margin-right: 30px;">
+        <?php echo $_SESSION['user_id'];?>님
+    </div>
     <p style="clear:both;">&nbsp;</p>
 
 

@@ -60,10 +60,9 @@
     </div>
 
     <!-- 로그인 줄 -->
-    <div style="font-size:15px;float:right;">
-
-            <?php echo $_SESSION['user_id'];?>님
-        </div>
+    <div style="font-size:20px; float:right; margin-right: 30px;">
+        <?php echo $_SESSION['user_id'];?>님
+    </div>
     <p style="clear:both;">&nbsp;</p>
 
     <h1>패션 상품 정보 검색</h1>
