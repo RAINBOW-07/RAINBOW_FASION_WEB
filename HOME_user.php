@@ -12,7 +12,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="css/home.css">
-
+    <script>document.cookie="large_category=Set";</script> <!--search할 때 소분류 안나타나는거 방지-->
     <title>RAINBOW</title>
 </head>
 <body id="body-pd">
