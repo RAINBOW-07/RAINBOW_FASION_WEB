@@ -63,30 +63,38 @@
     <p style="clear:both;">&nbsp;</p>
 
     <h1>패션 상품 정보 검색</h1>
+    <div>
+    <?php
+            $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
+            if (mysqli_connect_errno()) {
+                printf("Connect failed: %s\n", mysqli_connect_error());
+                exit();
+            } else {
+            $sql = "SELECT large_category, count(large_category) FROM cloth_info GROUP BY large_category";
+            $res = mysqli_query($mysqli, $sql);
+            while($row = mysqli_fetch_array($res))
+            {
+                echo "".$row['large_category'] .": " .$row['count(large_category)']. "개  | ";
+            }
+        }
+    ?>
+    </div>
     <div class="search">
-        <form style="font-weight: 600; margin-left: 30px;" method="post" action="search_result.php">
+        <form style="font-weight: 600;" method="post" action="search_result.php">
             대분류: 
             <?php
                 echo "<select style=\"border-radius: 10px; padding: 2px 15px;\" name=\"cloth_large\" onchange=\"setCookie(this.value);\">";
+                $sql = "SELECT DISTINCT large_category FROM category ORDER BY large_category";
+                $res = mysqli_query($mysqli, $sql);
 
-                $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
-                if (mysqli_connect_errno()) {
-                    printf("Connect failed: %s\n", mysqli_connect_error());
-                    exit();
-                } else {
-                    $sql = "SELECT DISTINCT large_category FROM category ORDER BY large_category";
-                    $res = mysqli_query($mysqli, $sql);
-
-                    while($row = mysqli_fetch_array($res))
-                    {
-                        if($row['large_category']==$_COOKIE['large_category']){
-                            echo "<option selected value=" .$row['large_category']. ">" . $row['large_category'] . "</option>";                             
-                        }else{
-                            echo "<option value=" .$row['large_category']. ">" . $row['large_category'] . "</option>";                             
-                        }
+                while($row = mysqli_fetch_array($res))
+                {
+                    if($row['large_category']==$_COOKIE['large_category']){
+                        echo "<option selected value=" .$row['large_category']. ">" . $row['large_category'] . "</option>";                             
+                    }else{
+                        echo "<option value=" .$row['large_category']. ">" . $row['large_category'] . "</option>";                             
                     }
                 }
-                mysqli_close($mysqli);
                 echo "</select>";
             ?>
             <script>
@@ -101,19 +109,14 @@
                 
                 $compare = $_COOKIE["large_category"];
                 
-                $mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
-                if (mysqli_connect_errno()) {
-                    printf("Connect failed: %s\n", mysqli_connect_error());
-                    exit();
-                } else {
-                    $sql = "SELECT DISTINCT small_category FROM category WHERE large_category=\"". $compare. "\"";
-                    echo $sql;
-                    $res = mysqli_query($mysqli, $sql);
+                
+                $sql = "SELECT DISTINCT small_category FROM category WHERE large_category=\"". $compare. "\"";
+                echo $sql;
+                $res = mysqli_query($mysqli, $sql);
 
-                    while($row = mysqli_fetch_array($res))
-                    {
-                        echo "<option value=" .$row['small_category']. ">" . $row['small_category'] . "</option>";                             
-                    }
+                while($row = mysqli_fetch_array($res))
+                {
+                    echo "<option value=" .$row['small_category']. ">" . $row['small_category'] . "</option>";                             
                 }
                 mysqli_close($mysqli);
 
