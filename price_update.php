@@ -20,5 +20,5 @@
     }
 ?>
 
-<script type="text/javascript" charset="utf-8">alert("더 좋은 정보를 제공하기 위해 노력하겠습니다 ^^");</script>
+<script>alert("Thank you for your help!");</script>
 <meta http-equiv="refresh" content="0 url=/direct_search_user.php">
