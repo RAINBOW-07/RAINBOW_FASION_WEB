@@ -1,4 +1,6 @@
+<head>
 <meta charset="utf-8" />
+</head>
 <?php	
 	session_start(); // cookie 세션 스타트
 	$mysqli = mysqli_connect("127.0.0.1","team07","team07","team07");
