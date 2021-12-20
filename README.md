@@ -16,7 +16,7 @@
 ## 🔎direct_search
 ![스크린샷(1164)](https://user-images.githubusercontent.com/71166763/146756480-11d8bf9d-f7bd-474e-93ff-707829efc1fc.png)  
 
-## Search_result
+## ▶Search_result
 ![스크린샷(1162)](https://user-images.githubusercontent.com/71166763/146756269-9ca5ceea-4e17-4307-9a2e-d117ef941b29.png)  
 
 ## 👍user_custom 
