@@ -1,6 +1,8 @@
 # 🌈RAINBOW 2021-2 빅데이터 응용
 <img src="https://img.shields.io/badge/HTML-E34F26?style=flat-square&logo=html5&logoColor=white"/> <img src="https://img.shields.io/badge/XAMPP-FB7A24?style=flat-square&logo=XAMPP&logoColor=white"/> <img src="https://img.shields.io/badge/PHP-777BB4?style=flat-square&logo=PHP&logoColor=white"/> <img src="https://img.shields.io/badge/MySQL-4479A1?style=flat-square&logo=MySQL&logoColor=white"/> <img src="https://img.shields.io/badge/Apache-D22128?style=flat-square&logo=Apache&logoColor=white"/> <br/>
-여러 사이트에서 판매하고 있는 옷들의 데이터를 취합하여 한 사이트에서 확인하며 비교할 수 있으며, 의류의 가격이나, 실제 구매자수나 검색어 순위를 분석하여 현재 트렌드를 확인할 수 있는 의류 정보 제공 사이트를 구성한다.
+여러 사이트에서 판매하고 있는 옷들을 확인 및 비교할 수 있으며,  
+의류의 가격이나 실제 구매자수 및 검색어 순위를 분석하여 현재 트렌드를 확인할 수 있는 의류 정보 제공 사이트.
+  
 ## 📝ER diagram
 Site, Cloth_info, Search_rank, Search_record, User_info, Week, Category 총 6개의 테이블로 구성되어 있다.  
 Cloth_info의 데이터는 쇼핑몰을 크롤링한 데이터를, Week는 Naver DataLab 데이터를 사용하였다.  
